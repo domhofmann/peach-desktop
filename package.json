@@ -1,0 +1,24 @@
+{
+  "name": "peach-desktop",
+  "version": "0.1.0",
+  "description": "Desktop client for peach.cool",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js"
+  },
+  "keywords": [
+    "peach",
+    "social",
+    "desktop",
+    "menubar"
+  ],
+  "author": "Jackson Palmer (@ummjackson)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "menubar": "^3.0.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.3"
+  }
+}

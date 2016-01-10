@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Peach</title>
+	<link rel="stylesheet" href="/css/peach.css">
+</head>
+
+<body>
+
+<div id="content"></div>
+
+<script id="page-login" type="text/ractive">
+	<h2 class="view-name">Login</h2>
+
+	<div class="box">
+
+		<form id="login">
+			<input id="email" type="email" required="required" placeholder="Email address">
+			<input id="password" type="password" required="required" placeholder="Password"> 
+			<input type="submit" class="bg-pink white" value="Sign In">
+		</form>
+
+	</div>
+</script>
+
+<script id="page-connections" type="text/ractive">
+
+<div class="box">
+	<img class="avatar" src="{{connections.data.requesterStream.avatarSrc}}"/>
+	<div class="user-details">
+		<h3>{{connections.data.requesterStream.displayName}}</h3>
+		<p class="gray">{{connections.data.requesterStream.posts.1.message.1.type}}</p>
+	</div>
+</div>
+
+<div class="bg-transparent box center">
+<button class="half-button bg-dark">Tell a friend</button>
+<button class="half-button bg-green white">Add a friend</button>
+</div>
+
+{{#connections.data.connections}}
+<div class="box">
+	<img class="avatar" src="{{#if avatarSrc}}{{avatarSrc}}{{else}}/img/default-avatar.png{{/if}}"/>
+	<div class="user-details">
+		<h3>{{displayName}}</h3>
+		<p class="gray">{{posts.1.message.1.type}}</p>
+	</div>
+</div>
+{{/connections}}
+
+</script>
+
+<script id="page-stream" type="text/ractive">
+
+	<h2 class="view-name">{{stream.data.displayName}}</h2>
+
+	<div class="box">
+
+		<h3 class="gray">{{stream.data.name}}</h3>
+		<img src="{{#if stream.data.avatarSrc}}{{stream.data.avatarSrc}}{{else}}/img/default-avatar.png{{/if}}"/>
+
+	</div>
+</script>
+
+<script src="/js/zepto.min.js"></script>
+<script src="/js/ractive.js"></script>
+<script src="/js/peach.js"></script>
+
+</body>
+</html>
