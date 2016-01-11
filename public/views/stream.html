@@ -1,0 +1,9 @@
+
+	<h2 class="view-name">{{ stream.data.displayName }}</h2>
+
+	<div class="box">
+
+		<h3 class="gray">{{ stream.data.name }}</h3>
+		<img src="{% if stream.data.avatarSrc %}{{ stream.data.avatarSrc }}{% else %}/img/default-avatar.png{% endif %}"/>
+
+	</div>

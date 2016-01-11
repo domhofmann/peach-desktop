@@ -75,9 +75,12 @@
 	}
 
 	.avatar {
-		width: 100%;
-		max-width: 20%; 
-		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		display: inline-block;
+		border-radius: 100%;
+		background: #fff no-repeat center;
+		background-size: cover;
 	}
 
 	.user-details {
@@ -97,5 +100,13 @@
 
 	.center {
 		text-align: center;
+	}
+
+	.no-padding {
+		padding: 0;
+	}
+
+	.no-margin {
+		margin: 0;
 	}
 

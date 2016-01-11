@@ -20,7 +20,7 @@ app.listen(1134, function () {
 })
 
 // Render menubar app
-var mb = menubar({icon: 'icon.png', index: 'http://localhost:1134/index.html', preloadWindow: true, height: 600})
+var mb = menubar({icon: 'icon.png', index: 'http://localhost:1134/index.html', height: 600})
 
 mb.on('ready', function ready () {
   console.log('Peach app started');

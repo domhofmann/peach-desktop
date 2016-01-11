@@ -1,5 +1,7 @@
+// Configure Nunjucks
+nunjucks.configure('views', { autoescape: true });
 
-// Login
+// Authorization function
 function login(email, password) {
   $.ajax({
     type: 'POST',
@@ -10,7 +12,7 @@ function login(email, password) {
       if (data.data.streams) {
          localStorage.id = data.data.streams[0].id;
          localStorage.token = data.data.streams[0].token;
-         loadConnections();
+         loadView('connections');
       }
       else {
         alert('TBD: login failed / retry');
@@ -22,77 +24,38 @@ function login(email, password) {
   });
 }
 
-// Load stream
-function loadStream(id) {
+// Load view function
+function loadView(view) {
 
-$.ajax({
+  $.ajax({
   type: 'GET',
-  url: 'http://localhost:1134/api/stream/id/' + id,
-  headers: { Authorization: 'Bearer ' + localStorage.token },
-  success: function(data){
-    ractive.set('stream', data);
-    ractive.resetTemplate('#page-stream');
-  },
-  error: function(xhr, type){
-    alert('TBD: feed load failed');
-  }
-});
-
-}
-
-// Load activity
-function loadActivity(id) {
-
-$.ajax({
-  type: 'GET',
-  url: 'http://localhost:1134/api/stream/activity',
-  headers: { Authorization: 'Bearer ' + localStorage.token },
-  success: function(data){
-    ractive.set('activity', data);
-    ractive.resetTemplate('#page-activity');
-  },
-  error: function(xhr, type){
-    alert('TBD: Activity load failed');
-  }
-});
-
-}
-
-// Load connections
-function loadConnections() {
-
-$.ajax({
-  type: 'GET',
-  url: 'http://localhost:1134/api/connections',
+  url: 'http://localhost:1134/api/' + view,
   headers: { Authorization: 'Bearer ' + localStorage.token },
   success: function(data){
     console.log(data);
-    ractive.set('connections', data);
-    ractive.resetTemplate('#page-connections');
+    $('#content').html(nunjucks.render(view + '.html', { [view]: data }));
   },
   error: function(xhr, type){
-    alert('TBD: Activity load failed');
+    alert('TBD: Load failed');
   }
 });
 
 }
-
-var ractive = new Ractive({
-  el: '#content'
-});
 
 // Start app
 Zepto(function($){
 
+  // If authorization token exists, default to connections view
   if (localStorage.token && localStorage.id) {
-   loadConnections();
+   loadView('connections');
   }
 
+  // If the token doesn't exist, render the login page
   else {
-    ractive.resetTemplate('#page-login');
+    $('#content').html(nunjucks.render('login.html'));
   }
 
-  // Login form submitted
+  // Bind login form submission
   $('#login').on('submit', function(e) {
       e.preventDefault(); e.stopPropagation();
       login($('#email').val(), $('#password').val());
