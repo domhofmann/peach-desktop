@@ -1,5 +1,14 @@
 // Configure Nunjucks
-nunjucks.configure('views', { autoescape: true });
+var env = nunjucks.configure('views', { autoescape: true });
+
+// Add moment.js filter to Nunjucks
+env.addFilter('fromNow', function(dts) {
+      if (!dts) {
+        return 'a while ago';
+      }
+      var s = moment.unix(dts).fromNow();
+      return s;
+    });
 
 // Authorization function
 function login(email, password) {

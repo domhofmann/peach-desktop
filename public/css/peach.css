@@ -110,3 +110,15 @@
 		margin: 0;
 	}
 
+	.indicator {
+		width: 10px;
+		height: 10px;
+		display: inline-block;
+		margin-right: 3px;
+		border-radius: 100%;
+	}
+
+	.status { 
+		display: inline-block;
+	}
+

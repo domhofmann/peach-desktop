@@ -2,7 +2,13 @@
 	<div class="avatar" style="background-image: url({{connections.data.requesterStream.avatarSrc}})"></div>
 	<div class="user-details">
 		<h3>{{connections.data.requesterStream.displayName}}</h3>
-		<p class="gray">Last message</p>
+		<p class="gray">
+			{% for post in connections.data.requesterStream.posts %}
+				{% if loop.last %}
+					{{ post.createdTime|fromNow }}
+				{% endif %}
+			{% endfor %}
+		</p>
 	</div>
 </div>
 
@@ -16,7 +22,14 @@
 	<div class="avatar" style="background-image: url({% if connection.avatarSrc %}{{ connection.avatarSrc }}{% else %}/img/default-avatar.png{% endif %})"></div>
 	<div class="user-details">
 		<h3>{{ connection.displayName }}</h3>
-		<p class="gray">Last message</p>
+		{% if connection.unreadPostCount > 0 %}<div class="indicator bg-green"></div>{% endif %}
+		<p class="gray status">
+			{% for post in connection.posts %}
+				{% if loop.last %}
+					{{ post.createdTime|fromNow }}
+				{% endif %}
+			{% endfor %}
+		</p>
 	</div>
 </div>
 {% endfor %}
