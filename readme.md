@@ -2,7 +2,7 @@
 
 A pre-alpha desktop client for Peach ([peach.cool](http://peach.cool/)) - built using unannounced API endpoints intercepted from the official iOS app.
 
-Built with Node + Electron + Menubar + Zepto + Redactive, and a bunch of hacky JS/CSS. Feel free to completely rearchitect or clean up as you see fit. 
+Built with Node + Electron + Menubar + Zepto + Nunjucks, and a bunch of hacky JS/CSS. Feel free to completely rearchitect or clean up as you see fit. 
 
 ### Developing:
 
