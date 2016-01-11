@@ -16,7 +16,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
-    "menubar": "^3.0.0"
+    "menubar": "^3.0.0",
+    "request": "^2.67.0"
   },
   "devDependencies": {
     "electron-prebuilt": "^0.36.3"
