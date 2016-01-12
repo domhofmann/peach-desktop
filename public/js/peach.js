@@ -43,6 +43,7 @@ function loadView(view, endpoint) {
   success: function(data){
     console.log(data);
     $('#content').html(nunjucks.render(view + '.html', { [view]: data }));
+    window.scrollTo(0,0);
   },
   error: function(xhr, type){
     alert('TBD: Load failed');

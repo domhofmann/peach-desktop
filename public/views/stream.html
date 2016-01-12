@@ -10,7 +10,7 @@
 
 <div class="posts">
 
-{% for post in stream.data.posts %}
+{% for post in stream.data.posts|reverse %}
 
 	<div class="post">
 
@@ -47,3 +47,4 @@
 {% endfor %}
 
 </div>
+<a id="bottom" href="#"></a>
