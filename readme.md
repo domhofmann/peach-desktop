@@ -18,6 +18,7 @@ If `npm start` fails, first make sure you have electron-prebuilt installed via N
 - App launches to menu bar / system tray
 - Login with saved state
 - View list of connections
+- View a connection's stream
 
 ### Not working:
 
