@@ -74,6 +74,10 @@
 		color: #9C9C9C;
 	}
 
+	.connection, .back-button {
+		cursor: pointer;
+	}
+
 	.avatar {
 		width: 50px;
 		height: 50px;
@@ -121,4 +125,68 @@
 	.status { 
 		display: inline-block;
 	}
+
+	.stream-bar {
+		background-color: #FFFFFF;
+		border-bottom: 2px solid #EAEAEA;
+		padding:1em;
+		width: 400px;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+
+	.posts {
+		margin-top: 87px;
+		background-color: #FFFFFF;
+		padding-top: 1em;
+	}
+
+	.posts img {
+		width: 100%;
+	}
+
+	.posts video {
+		width: 100%;
+	}
+
+	.text {
+		padding: 0em 1em;
+	}
+
+	.back-button {
+		color: #B2B2B2;
+		font-size: 2em;
+	    display: inline-block;
+	    vertical-align: top;
+	    margin-top: 12px;
+	    margin-right: 0.5em;
+	}
+
+	hr {
+		border: 1px solid #F3F3F3;
+		width: 2em;
+		margin: 1em 0em;
+	}
+
+	.message {
+		margin-bottom: 0.5em;
+	}
+
+	.message:last-child {
+		margin-bottom: 0;
+	}
+
+	.meta {
+		padding-top: 0.5em;
+		padding-left: 1.2em;
+		font-size: 0.8em;
+
+	}
+
+	.meta p, i {
+		display: inline-block;
+		margin-right: 0.3em;
+	}
+
 

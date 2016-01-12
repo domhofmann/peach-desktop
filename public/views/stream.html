@@ -1,9 +1,49 @@
 
-	<h2 class="view-name">{{ stream.data.displayName }}</h2>
+<div class="stream-bar">
+	<div class="back-button fa fa-chevron-left" onclick="loadView('connections','/connections')"></div>
+	<div class="avatar" style="background-image: url({% if stream.data.avatarSrc %}{{ stream.data.avatarSrc }}{% else %}/img/default-avatar.png{% endif %})"></div>
+	<div class="user-details">
+	<h3>{{ stream.data.displayName }}</h3>
+	<p class="gray status">@{{ stream.data.name }}</p>
+	</div>
+</div>
 
-	<div class="box">
+<div class="posts">
 
-		<h3 class="gray">{{ stream.data.name }}</h3>
-		<img src="{% if stream.data.avatarSrc %}{{ stream.data.avatarSrc }}{% else %}/img/default-avatar.png{% endif %}"/>
+{% for post in stream.data.posts %}
+
+	<div class="post">
+
+	{% for message in post.message %}
+
+		{% if message.type == 'text' %}
+			<div class="text message">{{ message.text }}</div>
+
+		{% elif message.type == 'image' %}
+			<img class="image message" src="{{ message.src }}"/>
+
+	    {% elif message.type == 'gif' %}
+	    	<img class="gif message" src="{{ message.src }}"/>
+
+	    {% elif message.type == 'video' %}
+	    	<video class="video message" poster="{{ message.posterSrc }}" onclick="this.paused?this.play():this.pause();">
+	    		<source src="{{ message.src }}" type="video/mp4">
+	    	</video>
+
+		{% endif %}
+
+	{% endfor %}
+
+		<div class="gray meta">
+			<i class="fa fa-heart-o">{% if post.likeCount > 0 %} {{ post.likeCount }}{% endif %}</i>
+			<i class="fa fa-comment-o">{% if post.commentCount %} {{ post.commentCount }}{% endif %}</i> 
+			<p> – {{ post.createdTime|fromNow }}</p>
+		</div>
 
 	</div>
+
+	<hr>
+
+{% endfor %}
+
+</div>

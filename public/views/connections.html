@@ -18,7 +18,7 @@
 </div>
 
 {% for connection in connections.data.connections %}
-<div class="box">
+<div class="box connection" onclick="loadView('stream','/stream/id/{{ connection.id }}')">
 	<div class="avatar" style="background-image: url({% if connection.avatarSrc %}{{ connection.avatarSrc }}{% else %}/img/default-avatar.png{% endif %})"></div>
 	<div class="user-details">
 		<h3>{{ connection.displayName }}</h3>

@@ -21,7 +21,7 @@ function login(email, password) {
       if (data.data.streams) {
          localStorage.id = data.data.streams[0].id;
          localStorage.token = data.data.streams[0].token;
-         loadView('connections');
+         loadView('connections', '/connections');
       }
       else {
         alert('TBD: login failed / retry');
@@ -34,11 +34,11 @@ function login(email, password) {
 }
 
 // Load view function
-function loadView(view) {
+function loadView(view, endpoint) {
 
   $.ajax({
   type: 'GET',
-  url: 'http://localhost:1134/api/' + view,
+  url: 'http://localhost:1134/api' + endpoint,
   headers: { Authorization: 'Bearer ' + localStorage.token },
   success: function(data){
     console.log(data);
@@ -56,7 +56,7 @@ Zepto(function($){
 
   // If authorization token exists, default to connections view
   if (localStorage.token && localStorage.id) {
-   loadView('connections');
+   loadView('connections','/connections');
   }
 
   // If the token doesn't exist, render the login page
