@@ -1,14 +1,3 @@
-	@font-face {
-    font-family: "San Francisco";
-    src: url("/fonts/SanFranciscoDisplay-Regular.otf");
-	}
-
-	@font-face {
-    font-family: "San Francisco";
-    src: url("/fonts/SanFranciscoDisplay-Bold.otf");
-    font-weight: bold;
-	}
-
 	* {
 		box-sizing: border-box;
 	}
@@ -27,7 +16,7 @@
 		padding: 0;
 		color: #494949;
 		background-color: #FEF0E5;
-		font-family: -apple-system, "San Francisco", "Helvetica Neue", "Lucida Grande";
+		font-family: -apple-system, "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
 	}
 
 	a, a:visited {
