@@ -1,0 +1,32 @@
+<div class="stream-bar">
+	<div class="back-button fa fa-chevron-left" onclick="loadView('connections','/connections')"></div>
+	<div class="user-details">
+	<h3>Friend requests</h3>
+	<p class="gray status">{{ requests.data.inboundFriendRequests|length }} incoming / {{ requests.data.outboundFriendRequests|length }} outgoing</p>
+	</div>
+	</div>
+</div>
+
+<div class="requests">
+{% for request in requests.data.inboundFriendRequests %}
+<div class="box connection incoming">
+	<div class="avatar" style="background-image: url({% if request.stream.avatarSrc %}{{ request.stream.avatarSrc }}{% else %}/img/default-avatar.png{% endif %})"></div>
+	<div class="user-details">
+		<h3>{{ request.stream.displayName }}</h3>
+		<p class="gray status">{{ request.stream.name }} sent you a friend request</p>
+	    <div class="request-actions"><p class="red decline">Decline</p> / <p class="green accept">Accept</p></div>
+	</div>
+</div>
+{% endfor %}
+
+{% for request in requests.data.outboundFriendRequests %}
+<div class="box connection outgoing">
+	<div class="avatar" style="background-image: url({% if request.stream.avatarSrc %}{{ request.stream.avatarSrc }}{% else %}/img/default-avatar.png{% endif %})"></div>
+	<div class="user-details">
+		<h3>{{ request.stream.displayName }}</h3>
+		<p class="gray status">Waiting for {{ request.stream.name }}...</p>
+	</div>
+</div>
+{% endfor %}
+
+</div>

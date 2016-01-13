@@ -12,12 +12,18 @@
 
 {% for post in stream.data.posts|reverse %}
 
-	<div class="post">
+	<div class="post wrap">
 
 	{% for message in post.message %}
 
 		{% if message.type == 'text' %}
 			<div class="text message">{{ message.text }}</div>
+
+	    {% elif message.type == 'link' %}
+	    	<div class="link message">
+	    		<p><a href="{{ message.url }}">{{ message.title }}</a></p>
+	    		<p class="gray status">{{ message.description }}</p>
+	    	</div>
 
 		{% elif message.type == 'image' %}
 			<img class="image message" src="{{ message.src }}"/>
@@ -26,9 +32,17 @@
 	    	<img class="gif message" src="{{ message.src }}"/>
 
 	    {% elif message.type == 'video' %}
-	    	<video class="video message" poster="{{ message.posterSrc }}" onclick="this.paused?this.play():this.pause();">
+
+	    	{% if message.subtype == 'looping photo' %}
+	    	<video class="looping-photo message" poster="{{ message.posterSrc }}" autoplay muted loop>
+	    		<source src="{{ message.src }}" type="video/mp4">
+	    	</video>	    	
+
+	    	{% else %}
+	    	<video class="video message" poster="{{ message.posterSrc }}" controls onclick="this.paused?this.play():this.pause();">
 	    		<source src="{{ message.src }}" type="video/mp4">
 	    	</video>
+	    	{% endif %}
 
 		{% endif %}
 
@@ -47,4 +61,3 @@
 {% endfor %}
 
 </div>
-<a id="bottom" href="#"></a>

@@ -1,3 +1,14 @@
+	@font-face {
+    font-family: "San Francisco";
+    src: url("/fonts/SanFranciscoDisplay-Regular.otf");
+	}
+
+	@font-face {
+    font-family: "San Francisco";
+    src: url("/fonts/SanFranciscoDisplay-Bold.otf");
+    font-weight: bold;
+	}
+
 	* {
 		box-sizing: border-box;
 	}
@@ -16,8 +27,11 @@
 		padding: 0;
 		color: #494949;
 		background-color: #FEF0E5;
-		font-family: system, -apple-system,
-      ".SFNSDisplay-Regular", "Helvetica Neue", "Lucida Grande";
+		font-family: -apple-system, "San Francisco", "Helvetica Neue", "Lucida Grande";
+	}
+
+	a, a:visited {
+		color: #21A9FC;
 	}
 
 	.box {
@@ -74,6 +88,14 @@
 		color: #9C9C9C;
 	}
 
+	.green {
+		color: #04D348;
+	}
+
+	.red {
+		color: #FE5E52;
+	}
+
 	.connection, .back-button {
 		cursor: pointer;
 	}
@@ -100,6 +122,7 @@
 		width: 49%;
 		font-size: 1em;
 		padding: 0.5em;
+		cursor: pointer;
 	}
 
 	.center {
@@ -136,6 +159,10 @@
 		left: 0;
 	}
 
+	.requests {
+		margin-top: 87px;
+	}
+
 	.posts {
 		margin-top: 87px;
 		background-color: #FFFFFF;
@@ -150,7 +177,7 @@
 		width: 100%;
 	}
 
-	.text {
+	.text, .link {
 		padding: 0em 1em;
 	}
 
@@ -187,6 +214,34 @@
 	.meta p, i {
 		display: inline-block;
 		margin-right: 0.3em;
+	}
+
+	.request-actions p {
+		display: inline;
+	}
+
+	.outgoing {
+		opacity: 0.8;
+	}
+
+	.wrap {
+
+	  /* These are technically the same, but use both */
+	  overflow-wrap: break-word;
+	  word-wrap: break-word;
+
+	  -ms-word-break: break-all;
+	  /* This is the dangerous one in WebKit, as it breaks things wherever */
+	  word-break: break-all;
+	  /* Instead use this non-standard one: */
+	  word-break: break-word;
+
+	  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+	  -ms-hyphens: auto;
+	  -moz-hyphens: auto;
+	  -webkit-hyphens: auto;
+	  hyphens: auto;
+
 	}
 
 

@@ -13,7 +13,7 @@
 </div>
 
 <div class="bg-transparent box center no-padding">
-<button class="half-button bg-dark">Tell a friend</button>
+<button class="half-button bg-dark" onclick="loadView('requests','/connections')">Requests ({{ connections.data.inboundFriendRequests|length + connections.data.outboundFriendRequests|length }})</button>
 <button class="half-button bg-green white">Add a friend</button>
 </div>
 

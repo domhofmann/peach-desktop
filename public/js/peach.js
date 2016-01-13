@@ -48,8 +48,7 @@ function loadView(view, endpoint) {
   error: function(xhr, type){
     alert('TBD: Load failed');
   }
-});
-
+  });
 }
 
 // Start app
