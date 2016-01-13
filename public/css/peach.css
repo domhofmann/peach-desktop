@@ -81,7 +81,7 @@
 		color: #04D348;
 	}
 
-	.red {
+	.red, .liked {
 		color: #FE5E52;
 	}
 
@@ -203,6 +203,10 @@
 	.meta p, i {
 		display: inline-block;
 		margin-right: 0.3em;
+	}
+
+	.like {
+		cursor: pointer;
 	}
 
 	.request-actions p {

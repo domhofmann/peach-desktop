@@ -39,7 +39,7 @@
 	    	</video>	    	
 
 	    	{% else %}
-	    	<video class="video message" poster="{{ message.posterSrc }}" controls onclick="this.paused?this.play():this.pause();">
+	    	<video class="video message" poster="{{ message.posterSrc }}" onclick="this.paused?this.play():this.pause();">
 	    		<source src="{{ message.src }}" type="video/mp4">
 	    	</video>
 	    	{% endif %}
@@ -49,8 +49,8 @@
 	{% endfor %}
 
 		<div class="gray meta">
-			<i class="fa fa-heart-o">{% if post.likeCount > 0 %} {{ post.likeCount }}{% endif %}</i>
-			<i class="fa fa-comment-o">{% if post.commentCount %} {{ post.commentCount }}{% endif %}</i> 
+			<i class="like fa fa-heart-o{% if post.likedByMe == true %} liked{% endif %}" data-postid="{{ post.id }}">{% if post.likeCount > 0 %} {{ post.likeCount }}{% endif %}</i>
+			<i class="comment fa fa-comment-o">{% if post.commentCount %} {{ post.commentCount }}{% endif %}</i> 
 			<p> – {{ post.createdTime|fromNow }}</p>
 		</div>
 
@@ -61,3 +61,24 @@
 {% endfor %}
 
 </div>
+
+<script>
+
+$('.like').on('click', function(){
+
+	if ($(this).hasClass('liked')) {
+		// Unlike code
+	}
+
+	else {
+		likePost($(this).data('postid'));
+		$(this).addClass('liked');
+		current = parseInt($(this).text());
+		if (isNaN(current)) { current = 0; }
+		updated = current + 1;
+		$(this).text(' ' + updated);
+	}
+
+});
+
+</script>
